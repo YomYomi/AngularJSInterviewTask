@@ -1,0 +1,70 @@
+﻿
+<div class="container" dir="rtl">
+    <div class="row">
+        <div class="col">
+            <h2>
+                <span>
+                    {{pageName}}
+                </span>
+            </h2>
+        </div>
+        <div class="w-100"></div>
+        <div class="col">
+
+            <form class="">
+                <input ng-model="query" class="mr-sm-2" type="search" placeholder="חפש לפי שם מ.זהות ועוד" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+        </div>
+        <div class="w-100"></div>
+
+        <div class="col">
+            <ul class="list-unstyled">
+                <li ng-repeat="employee in employees | filter:query">
+                    <div class="card" style="width: 18rem;">
+                        <img width="80" height="250" class="card-img-top" ng-src={{employee.Image}} alt="{{employee.FirstName +' ' +employee.LastName }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{employee.FirstName +' ' +employee.LastName }}</h5>
+                            <p class="card-text">
+                                פרטי עובד
+                                <ul class="list-unstyled">
+                                    <!--<li>
+                                    <span>
+                                        ת"ז:
+                                    </span>
+                                    <b>{{employee.ID}}</b>
+                                </li>-->
+                                    <li>
+                                        <span>שם פרטי :</span>
+                                        {{employee.FirstName}}
+                                    </li>
+                                    <li>
+
+
+                                        <span>שם משפחה: </span>
+                                        {{employee.LastName}}
+                                    </li>
+                                    <li>
+                                        וא
+                                        <span>דוא"ל:  </span>
+                                        {{employee.Email}}
+                                    </li>
+                                    <li>
+                                        <span>ממונה ישיר:  </span>
+                                        {{employee.Superior}}
+                                    </li>
+                                </ul>
+                            </p>
+                            <a href="../employeeDetails/{{employee.ID}}" class="btn btn-primary">הצג</a>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</div>
+

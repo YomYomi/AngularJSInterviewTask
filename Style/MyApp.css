@@ -1,0 +1,31 @@
+﻿main .container {
+    margin-left: 0px;
+}
+
+
+.warehouse {
+    display: inline-block;
+    margin-right: .5em;
+}
+
+.equipment {
+    display: inline-block;
+}
+
+.item {
+    display: block;
+    width: 10em;
+    padding: 1em;
+    font-size: 1em;
+    border: 1px solid #0027e1;
+    margin-bottom: .5em;
+}
+
+.db {
+    border-color: red;
+    display: block;
+    margin-bottom: 2em;
+}
+ul#ulEmployeeDetails li {
+    margin: 10px 0;
+}

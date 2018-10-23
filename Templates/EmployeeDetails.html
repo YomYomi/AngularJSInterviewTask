@@ -1,0 +1,84 @@
+﻿
+<div class="container">
+
+    <p>
+        <h2>{{pageName}}</h2>
+    </p>
+
+    <form name="myform">
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" ng-src="{{currentEmployee.Image}}" alt="{{currentEmployee.FirstName +' ' +currentEmployee.LastName}}" ng-show="{{currentEmployee.ID != ''}}">
+                    <div class="card-body">
+                        <h5 class="card-title" ng-show="{{currentEmployee.ID != ''}}">{{currentEmployee.FirstName +' ' +currentEmployee.LastName }}</h5>
+                        <p class="card-text">
+                            <ul class="list-unstyled" id="ulEmployeeDetails">
+                                <li>
+                                    <div class="container">
+                                        <div class="row" style="padding-bottom:10px;">
+                                            <div class="col-12"> תעודת זהות:</div>
+                                            <div class="col-12">
+                                                <input type="text" ng-model="currentEmployee.ID" ng-disabled="{{currentEmployee.ID != ''}}" size="15" ng-required="true" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">שם פרטי:</div>
+                                            <div class="col-12">
+                                                <input type="text" ng-model="currentEmployee.FirstName" ng-disabled="currentEmployee.disabled" size="15" ng-required="true" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">משפחה:</div>                                        <div class="col">
+                                                <input type="text" ng-model="currentEmployee.LastName" ng-disabled="currentEmployee.disabled" size="15" ng-required="true" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">דוא"ל:</div>
+
+                                            <div class="col-12">
+                                                <input type="text" ng-model="currentEmployee.Email" ng-disabled="currentEmployee.disabled" size="15" ng-required="true" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">ממונה ישיר:</div>
+                                            <div class="col-12">
+                                                <input type="text" ng-model="currentEmployee.Superior" ng-disabled="currentEmployee.disabled" size="15" ng-required="true" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="warehouse">
+                    <span>מאגר הציוד: </span>
+                    <div ng-repeat="(key, value) in warehouse" class="item" ng-click="setEquipment(key)" ng-hide="value==0">
+                        <label>{{key}}</label><label>: {{value}}</label>
+                    </div>
+
+                </div>
+
+                <div class="equipment">
+                    <span> ציוד אצל העובד: </span>
+                    <div ng-repeat="(key, value) in currentEmployee.Equipment" class="item" ng-click="updateWarehouse(key)" ng-hide="value==0">
+                        <label>{{key}}</label><label>: {{value}}</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        
+        <input type="button" class="btn btn-primary" value="{{currentEmployee.disabled ? 'עריכה' : 'ביטול'}}" ng-click="cancelEditEmployeeClick()" />
+        <input type="submit" class="btn btn-primary" value="שמור"  ng-click="myform.$valid &&saveEmployee()" ng-show="!currentEmployee.disabled" />      
+
+    </form>
+
+</div>
+
